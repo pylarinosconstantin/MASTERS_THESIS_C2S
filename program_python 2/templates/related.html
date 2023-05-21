@@ -1,0 +1,606 @@
+{%extends "master.html" %}
+{%block content%}
+<link rel="stylesheet" href="/css/allcontents.css">
+<link rel="stylesheet" href="/css/related.css">
+
+
+<div class="col-md-8">
+
+	<form id="contentup">
+		<div class="thoughts">
+			<div class="audience">
+				
+				<img src="" id="prof_photcont">
+				<div class="selectmob" style="display: flex;">
+						<div class="custom-select" style="width:200px;">
+						<select id="public" name="public">
+							<!--<option disabled selected value>Audience</option>-->
+							<option value="0">Friends</option>
+							<option value="1">Public</option>
+						</select>
+						
+						</div>
+						<select id="category" class="custom-select1" name="category" required>
+							<option disabled selected value>Category</option>
+							<option value="Humanities and Social Science">Humanities and social science</option>
+							<option value="Linguistics and History">Linguistics and History</option>
+							<option value="Arts">Arts</option>
+							<option value="Economics">Economics</option>
+							<option value="Political Science">Political science</option>
+							<option value="Psychology">Psychology</option>
+							<option value="Medicine">Medicine</option>
+							<option value="Biology">Biology</option>
+							<option value="Chemistry">Chemistry</option>
+							<option value="Engineering">Engineering</option>
+							<option value="Computer Science">Computer science</option>
+							<option value="Law">Law</option>
+							<option value="Sports">Sports</option>
+							<option value="Software Development">Software Development</option>
+							<option value="Other">Other</option>
+						</select>
+				</div>
+			</div>
+			<div class="write">
+				<textarea id="title" name="title" rows="15" cols="53" placeholder="Care to share your thoughts?"></textarea>
+			</div>
+			<div class="">
+				<div action="" class="media1">
+				<label for="file-upload" class="custom-file-upload">
+					<i class="fa fa-image"></i>
+				</label>
+				<input id="file-upload" type="file" name="file-upload"/>
+				<button type="submit" id="share1">Share</button>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	
+	<div class="content" id="allcont">
+
+		<div class="userinfo">
+			<img id="userimg" src="">
+			<a href=""  id="name"></a>
+			<p id="nickname"></p>
+			<!--<p id="date"></p>-->
+		</div>
+		
+		<div class="usercont">
+			<img id="contentimg" src="">
+			<span id="cont_text">
+			
+			<span>
+		</div>
+		<div class="butns">
+			<b id="views"><i class="fa fa-eye"></i></b>
+			<button id="btnlikes"><i class="fa fa-heart"></i></button>
+			<button id="btnbook"><i class="fa fa-bookmark"></i></button>
+		</div>
+	</div>
+	
+	
+	
+</div>
+<div class="col-md-4 categories">
+	<input class="search" type="text" class="form-control" id="" name="" onfocus="searchFunction()" placeholder="&#xF002;  Search people" style="font-family:Arial, FontAwesome">
+
+	<div class="categ_inner1" id="allpeople" style="display: none;">
+		<!-- User list goes here -->
+		<section class="addpeople" id="searchp_">
+			
+				<div class="add">
+					<img id="searchuserimg" src="">
+				</div>
+				<div class="name"><a href=""  id="searchname"></a> <br> <span class="nickname" id="searchnickname">@JMay</span></div>
+				
+				<button id="followbtn" onclick="followprof()">
+					<span id="follow">Follow</span>
+					<span id="following" style="display:none">Following</span>
+				</button>
+			
+		</section>
+		<section class="addpeople">
+			<div class="add">
+				<img src="/img/test2.png">
+			</div>
+			<div class="name">Spaceman <br> <span class="nickname">@Oddysey</span></div>
+			
+			<button><b>Add</b></button>
+		</section>
+	</div>
+
+
+
+		<div class="categ_inner">
+				<h3 class="cathead" id="cathead"><b>Categories</b></h3>
+			<div  id="categ_inner">
+				<section class="selectcateg">
+					<div class="horizontal">
+						<h4>Physics</h4>
+					</div>
+					<button><b>+</b></button>
+				</section>
+				<section class="selectcateg">
+					<div class="horizontal">
+						<h4>Python</h4>
+					</div>
+					<button><b>+</b></button>
+				</section>
+				<section class="selectcateg">
+					<div class="horizontal">
+						<h4>Maths</h4>
+						<!--<h6>2.70K Followers</h6>-->
+					</div>
+					<button><b>+</b></button>
+				</section>
+				<section class="selectcateg">
+					<div class="horizontal">
+						<h4>PHP</h4>
+					</div>
+					<button><b>+</b></button>
+				</section>
+				<section class="selectcateg">
+					<div class="horizontal">
+						<h4>MVC</h4>
+					</div>
+					<button><b>+</b></button>
+				</section>
+				<section class="selectcateg">
+					<div class="horizontal">
+						<h4>Bach</h4>
+					</div>
+					<button><b>+</b></button>
+				</section>
+			</div>
+		<div>	
+</div>
+	
+		
+<script>
+
+
+
+
+
+
+//search people function
+function searchFunction() {
+	const searchInput = document.querySelector('.search');
+	const userList = document.querySelector('.categ_inner1');
+	const userNames = document.querySelectorAll('.name');
+	const cathead = document.getElementById("cathead")
+	// Show user list when search input is focused
+	if(userList.style.display = 'block'){
+		document.getElementById("cathead").style.top = "444px";
+	}
+	
+	// Filter user list based on search input value
+	searchInput.addEventListener('input', function() {
+	  const searchTerm = this.value.toLowerCase();
+	  
+	  userNames.forEach(function(name) {
+		const nameText = name.textContent.toLowerCase();
+		if (nameText.includes(searchTerm)) {
+		  name.parentElement.style.display = 'block';
+		} else {
+		  name.parentElement.style.display = 'none';
+		}
+	  });
+	});
+	
+	// Hide user list when search input is blurred, unless the click is inside an addpeople section
+	searchInput.addEventListener('blur', function(event) {
+	  setTimeout(function() {
+		if (!userList.contains(event.relatedTarget) || event.relatedTarget.classList.contains('addpeople')) {
+			if(userList.style.display = 'none'){
+				document.getElementById("cathead").style.top = "65px";
+			}
+		}
+	  }, 100);
+	});
+  }
+
+  
+  
+  
+
+	
+	
+	$(document).ready(function(){
+		$("#search").keyup(function(res){
+			
+			v=$("#search").val().toUpperCase();
+			
+			var A=$(".cnt");
+			for (i=0;i<A.length;i++)
+			{
+				if($(A[i]).text().toUpperCase().indexOf(v)==-1)
+				{
+					$(A[i]).hide();
+				}
+				else
+				{
+					$(A[i]).show();
+				}
+			}
+			
+		});
+		
+		
+	});
+
+	function getuserdata(){
+		$.get("/userdata", function(res){
+			console.log(res);
+			
+			$("#prof_photcont").attr("src",`uploads/${res.profilephoto}`);
+			
+				});
+			}
+			
+			
+
+			
+			function createNickname(name) {
+				// Extract the first 3 and last 2 letters
+				const firstName = name.substring(0, 3);
+				const lastName = name.substring(name.length - 2);
+				// Create the nickname
+				const nickname = `@${firstName}_${lastName}`;
+				return nickname;
+			  }
+			  
+			  function putperson(a) {
+				var userimg = a.profilephoto ? `uploads/${a.profilephoto}` : '/img/default_profile.png';
+				var name = a.name;
+				var contentimg = a.filename ? `uploads/${a.filename}` : '';
+				var cont_text = a.title;
+				var date = a.date;
+				var dateObj = new Date(date);
+				var options = {weekday: 'short', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit'};
+				var formattedDate = dateObj.toLocaleString('en-US', options);
+				var nickname = createNickname(name);
+			  
+				var htm = `
+				  <div class="content" data-post-id="${a.id_cont}" id="${a.score}">
+					<div class="userinfo">
+					  <img id="userimg_${a.id}" src="${userimg}">
+					  <a href="/profile/${a.iduser}" id="name_${a.id}">${name}</a>
+					  <p id="nickname_${a.id}">${nickname}</p>
+					  <p id="date">${formattedDate}</p>
+					</div>
+					<div class="usercont">
+					  <img id="contentimg_${a.id}" src="${contentimg}">
+					  <span id="cont_text_${a.id}">
+						${cont_text}
+					  </span>
+					</div>
+					<div class="butns">
+					  <b id="views_${a.id_cont}" onscroll="countViews(${a.id_cont})">
+						<span id="cont_text_${a.id}">
+						  ${a.views}
+						</span>
+						<i class="fa fa-eye"></i>
+					  </b>
+					  <button id="btnlikes_${a.id_cont}" onclick="like(${a.id_cont})"><span id="contlikes">${a.likes}</span><i class="fa fa-heart"></i></button>
+					  <button id="btnbook_${a.id_cont}" onclick="save(${a.id_cont})"><span id="contsaves">${a.saves}</span><i class="fa fa-bookmark"></i></button>
+					</div>
+				  </div>
+				`;
+				
+				var container = $("#allcont");
+				var contentDivs = container.children(".content");
+				var latestPostScore = a.score;
+			  
+				// insert the new content in the correct position based on score
+				for (var i = 0; i < contentDivs.length; i++) {
+				  var contentScore = contentDivs.eq(i).attr("id");
+				  if (latestPostScore > contentScore) {
+					contentDivs.eq(i).before(htm);
+					return;
+				  }
+				}
+				container.append(htm);
+			  }
+
+			  function countViews(post){
+				var postTop = post.offset().top;
+				var postHeight = post.height();
+				var windowHeight = $(window).height();
+				var windowTop = $(window).scrollTop();
+				if (windowTop + windowHeight >= postTop + postHeight && !post.hasClass("viewed")) {
+					post.addClass("viewed"); // Add viewed class to post element
+					$.ajax({
+						url: '/view',
+						type: 'POST',
+						data: JSON.stringify({ id_cont: post.data('post-id') }),
+						contentType: 'application/json', // add the Content-Type header
+						success: function(data) {
+
+							$.get("/bestposts", function(res){
+								console.log(res);
+								
+									});
+							
+						}
+					});
+				}
+				
+			}
+			
+			
+			$(window).on("scroll", function() {
+				$("#allcont .content").each(function() {
+					countViews($(this));
+				});
+			});
+			
+			  
+
+			function putusers(a) {
+				
+				var userimg = a.profilephoto ? `uploads/${a.profilephoto}` : '/img/default_profile.png';
+				var name = a.name;
+				var nickname = createNickname(name);
+			  
+				var htm = `
+				  <section class="addpeople" id="searchp_${a.id}">
+					<div class="add">
+					  <img id="searchuserimg" src="${userimg}">
+					</div>
+					<div class="name">
+					  <a href="/profile/${a.id}"  id="searchname">${name}</a> <br>
+					  <span class="nickname" id="searchnickname">${nickname}</span>
+					</div>
+					<button id="followbtn_${a.id}" onclick="followprof(${a.id})">
+					  <span id="follow_${a.id}">Follow</span>
+					  <span id="following_${a.id}" style="display:none">Following</span>
+					</button>
+				  </section>
+				`;
+			  
+				$("#allpeople").append(htm);
+			  }
+
+			  
+			  var hasfollow=0;
+			  function followprof(id) {
+				  if (hasfollow == 0) {
+					  $.post('/folow/' + id, function(res) {
+						  $(`#followbtn_${id}`).removeClass("follow").addClass("following");
+						  $(`#follow_${id}`).hide();
+						  $(`#following_${id}`).show();
+						  hasfollow = 1;
+					  })
+				  } else {
+					  $.post('/unfolow/' + id, function(res) {
+						  $(`#followbtn_${id}`).removeClass("following").addClass("follow");
+						  $(`#following_${id}`).hide();
+						  $(`#follow_${id}`).show();
+						  hasfollow = 0;
+					  })
+				  }    
+			  }
+			  
+			  function getFollowDataProfile(id){
+				$.get('/showfollow/' + id, function(res) {
+					console.log(res);
+					if(res.following==true){ 
+						$(`#followbtn_${id}`).removeClass("follow").addClass("following");
+						$(`#follow_${id}`).hide();
+						$(`#following_${id}`).show();
+						
+					}
+				
+						});
+					}
+			  
+					function getbestposts() {
+						$("#allcont").html("");
+						$.getJSON("/bestposts", function(res) {
+						  console.log(res);
+						  // sort the content by score
+						  res.sort(function(a, b) {
+							return b.score - a.score;
+						  });
+						  for (i = 0; i < res.length; i++) {
+							putperson(res[i]);
+						  }
+						});
+					  }
+			  
+			  
+
+			  function getallusers() {
+				$("#allpeople").html("");
+				$.getJSON("/searchuser", function(res) {
+				  for (i = 0; i < res.length; i++) {
+					putusers(res[i]);
+					getFollowDataProfile(res[i].id);
+				  }
+				});
+			  }
+			 
+			  
+			
+			  
+
+
+
+
+
+			$(document).ready(function() {
+				$('#contentup').submit(function(event) {
+				  event.preventDefault(); // prevent the form from submitting normally
+				  const title = $('#title').val();
+				  const public = $('#public').val();
+				  const category = $('#category').val();
+				  const file = $('#file-upload')[0].files[0];
+				  const formData = new FormData();
+				  formData.append('title', title);
+				  formData.append('public', public);
+				  formData.append('category', category);
+				  formData.append('file-upload', file);
+				  $.ajax({
+					url: '/statusUpload',
+					type: 'POST',
+					data: formData,
+					processData: false,
+					contentType: false,
+					success: function(response) {
+						if(response =="true"){
+							
+							$.get("/bestposts", function(res){
+								//console.log(res);
+								//$("#profilepic1").attr("src",`uploads/${res.profilephoto}`);
+									});
+
+							window.location.href="/allcontents";
+
+							
+							
+						}else{
+							alert('file not uploaded');
+						}
+					},
+				});
+
+
+
+				});
+			  });
+
+			  
+			  var haslike=0;
+			  function like(id_cont) {
+				if (haslike==0){
+
+					$.post("/like", {'id_cont': id_cont}, function(res) {
+							$(`#btnlikes_${id_cont} i`).addClass("liked");
+							haslike = 1;
+					})
+				}
+				else{
+					$.post("/unlike", {'id_cont': id_cont}, function(res) {
+						$(`#btnlikes_${id_cont} i`).removeClass("liked");
+						haslike = 0;
+				})
+				}
+				
+			}
+		
+			var hassave=0;
+			function save(id_cont) {
+			  if (hassave==0){
+
+				  $.post("/save", {'id_cont': id_cont}, function(res) {
+						$(`#btnbook_${id_cont} i`).addClass("saved");
+						hassave = 1;
+				  })
+			  }
+			  else{
+				  $.post("/unsave", {'id_cont': id_cont}, function(res) {
+					$(`#btnbook_${id_cont} i`).removeClass("saved");
+					  hassave = 0;
+			  })
+			  }
+			  
+		  }
+
+
+		  function showSaved() {
+			$.get("/showSaved", function(res) {
+				console.log(res.saved_posts);
+				for (var i = 0; i < res.saved_posts.length; i++) {
+					$(`#btnbook_${res.saved_posts[i]} i`).addClass("saved");
+				}
+			});
+		}
+
+		function showLike() {
+			$.get("/showLike", function(res) {
+				console.log(res.liked_posts);
+				for (var i = 0; i < res.liked_posts.length; i++) {
+					$(`#btnlikes_${res.liked_posts[i]} i`).addClass("liked");
+				}
+			});
+		}
+	
+					function countLikes() {
+						$.get("/countLikes", function(res) {
+							console.log(res.followers);
+							for (var i = 0; i < res.followers; i++) {
+								$("#followers").text(res.followers);
+							}
+						});
+					}
+
+					function categoryContent() {
+						$("#categ_inner").html("");
+						$.getJSON("/categoryContent1", function(res) {
+							console.log(res);
+							for (var i = 0; i < res.length; i++) {
+								putcategory(res[i]);
+							}
+						}).fail(function() {
+							$("#msg").html(`<div class="alert-danger">Server error</div>`);  
+						});
+					}
+					
+					function putcategory(a) {
+						var name = a.name;
+						var id = a.id;
+						var htm = `
+							<section class="selectcateg" id="cat_${id}">
+								<div class="horizontal">
+									<h4>${name}</h4>
+								</div>
+								<button onClick="addCategory(${id})"><b>+</b></button>
+							</section>
+							`;
+						$("#categ_inner").prepend(htm);
+					}
+
+					function addCategory(id){
+						$.get("/addCategory/" + id, function(res) {
+							console.log(res);
+							if (res === "true") {
+								$("#cat_" + id).hide();  
+							} else {
+								alert('Network error');
+							}
+						}).fail(function() {
+							alert('Network error');
+						});
+					}
+
+
+
+
+					function incrementViewCount(postId) {
+						// Make an AJAX request to increment the view count on the server
+						$.ajax({
+						  url: '/view',
+						  type: 'POST',
+						  data: { postId: postId },
+						  success: function(data) {
+							// If the view count was successfully incremented, update the view count element in the HTML
+							$('#views_' + postId + ' span').text(data.views);
+						  }
+						});
+					  }
+
+
+
+
+categoryContent();
+getFollowDataProfile();
+showSaved();
+showLike();
+getuserdata();
+getbestposts();
+getallusers();
+</script>
+
+{% endblock %}
+

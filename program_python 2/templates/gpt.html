@@ -1,0 +1,18 @@
+{%extends "master.html" %}
+{%block content%}
+<link rel="stylesheet" href="/css/gpt.css">
+<div class="chat-container">
+    <div class="chat-header">
+      <h2>Ask me anything</h2>
+    </div>
+    <div class="chat-history" id="chat-history">
+      <!-- messages will be added here -->
+    </div>
+    <div class="chat-footer">
+      <input type="text" placeholder="Type your message..." id="chat-input" />
+      <button type="button" id="chat-send">Send</button>
+    </div>
+  </div>
+
+{% endblock %}
+

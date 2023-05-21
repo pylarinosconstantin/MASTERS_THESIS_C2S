@@ -1,0 +1,90 @@
+{%extends "master.html" %}
+{%block content%}
+<link rel="stylesheet" href="/css/notifications.css">
+
+
+    <div class="col-md-8">
+        <div class="notification">
+            <i class="fa fa-user-o" aria-hidden="true"></i>
+            <p>There was a login to your account @ConPyl from a new device on 20 Dec 2022. Review it now.</p>
+            <span class="closenot" onclick="dissapear()">X</span>
+        </div>
+        <div class="notification">
+            <i class="fa fa-user-o" aria-hidden="true"></i>
+            <p>There was a login to your account @ConPyl from a new device on 20 Dec 2022. Review it now.</p>
+            <span class="closenot" id="hide">X</span>
+        </div>
+        <div class="notification">
+            <i class="fa fa-user-o" aria-hidden="true"></i>
+            <p>There was a login to your account @ConPyl from a new device on 20 Dec 2022. Review it now.</p>
+            <span class="closenot" id="hide">X</span>
+        </div>
+        <div class="notification">
+            <i class="fa fa-user-o" aria-hidden="true"></i>
+            <p>There was a login to your account @ConPyl from a new device on 20 Dec 2022. Review it now.</p>
+            <span class="closenot" id="hide">X</span>
+        </div>
+        <div class="notification">
+            <i class="fa fa-user-o" aria-hidden="true"></i>
+            <p>There was a login to your account @ConPyl from a new device on 20 Dec 2022. Review it now.</p>
+            <span class="closenot" id="hide">X</span>
+        </div>
+    </div>
+    <div class="col-md-4 categories">
+        <input class="search" type="text" class="form-control" id="" name="" onfocus="searchFunction()" placeholder="&#xF002;  Search categories" style="font-family:Arial, FontAwesome">
+        <div class="categ_inner">
+            <h3 class="cathead"><b>Categories</b></h3>
+            <section class="selectcateg">
+                <div class="horizontal">
+                    <h4>Physics</h4>
+                    <h6>6.70K Followers</h6>
+                </div>
+                <button><b>+</b></button>
+            </section>
+            <section class="selectcateg">
+                <div class="horizontal">
+                    <h4>Python</h4>
+                    <h6>68.70K Followers</h6>
+                </div>
+                <button><b>+</b></button>
+            </section>
+            <section class="selectcateg">
+                <div class="horizontal">
+                    <h4>Maths</h4>
+                    <h6>2.70K Followers</h6>
+                </div>
+                <button><b>+</b></button>
+            </section>
+            <section class="selectcateg">
+                <div class="horizontal">
+                    <h4>PHP</h4>
+                    <h6>5.70K Followers</h6>
+                </div>
+                <button><b>+</b></button>
+            </section>
+            <section class="selectcateg">
+                <div class="horizontal">
+                    <h4>MVC</h4>
+                    <h6>16.7K Followers</h6>
+                </div>
+                <button><b>+</b></button>
+            </section>
+            <section class="selectcateg">
+                <div class="horizontal">
+                    <h4>Bach</h4>
+                    <h6>1.70K Followers</h6>
+                </div>
+                <button><b>+</b></button>
+            </section>
+        <div>	
+    </div>
+
+<script>
+    function dissapear() 
+    { 
+        var x = document.getElementsByClassName("notification"); 
+        x.style.display = "none"; 
+      } 
+
+</script>
+{% endblock %}

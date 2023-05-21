@@ -1,0 +1,633 @@
+
+  /*  profile styles  */
+  .background{
+    height: 250px;
+    overflow: hidden;
+    width: 100%;
+  }
+  .background img{
+    width: 100%;
+    height: auto;
+    z-index: -1;
+    
+  }
+  .feed{
+    border-right: 1px solid #5d5d5d80;
+  }
+  .categories{
+    border-left: 1px solid transparent !important;
+  }
+  .profilepic{
+    display: flex;
+    justify-content: space-between;
+  }
+  .profilepic img{
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 5px solid black;
+    position: relative;
+    bottom: 65px;
+    
+    transition-duration: 0.2s;
+  }
+  .profilepic img:hover{
+    transition-duration: 0.2s;
+    transform: scale(1.07);
+  }
+
+  .profilepic button{
+    background-color: rgb(239, 243, 244);
+    border: none;
+    transition-duration: 0.3s;
+    height: 42px;
+    width: 120px;
+    margin-top: 10px;
+    font-size: 10pt;
+    color: black;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 12pt;
+   
+  }
+  .margins{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .nameprofile{
+    font-size: 16pt;
+    color: rgb(239, 243, 244);
+    position: relative;
+    bottom: 50px;
+
+  }
+  .bio{
+    font-size: 11pt;
+    color: rgb(239, 243, 244) !important;
+  }
+  .info{
+    position: relative;
+    bottom: 50px;
+    font-family: "Lato", sans-serif;
+  }
+ 
+  .details span{
+    font-size: 20px;
+    color: #818181;
+  }
+  
+  .details{
+    color: #818181;
+    font-size: 12pt;
+    position: relative;
+    bottom: 50px;
+    right: 20px;
+  }
+ .followers{
+    display: inline-flex;
+    color: #818181;
+    font-size: 12pt;
+    position: relative;
+    bottom: 48px;
+    
+ }
+ .fl{
+    padding-right: 10px;
+ }
+ .followers span{
+    color: rgb(239, 243, 244) !important;
+    padding-right: 4px;
+ }
+
+
+  .space{
+    float: left;
+    margin-right: 25px;
+  }
+  .details a{
+    color: rgb(29, 155, 240);
+  }
+  .fa-map-marker{
+    padding-left: 0;
+
+  }
+  .fa-link{
+    padding-left: 0;
+  }
+  .fa-calendar{
+    padding-left: 0;
+  }
+
+  /* The Modal (background) edit profile  */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 50px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(91, 112, 131, 0.4);/* Black w/ opacity */
+  transition-duration: 0.2s;
+  
+}
+
+
+/* Modal Content edit profile */
+.modal-content {
+  background-color: #0a0a0a;
+  margin: auto;
+  border: 5px solid #000000;
+  width: 650px;
+  height: 600px;
+  border-radius: 19px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+/* The Close Button */
+.close {
+  color: white !important;
+  float: left;
+  font-size: 28px;
+  font-weight: lighter;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+.close:hover{
+  color: white !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+.close:focus {
+  color: white !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modhead{
+    height: 50px;
+    padding: 10px;
+    position: fixed;
+    top: 55px;
+    z-index: 10;
+    width: 639.8px;
+    background-color: rgba(0, 0, 0, 0.805);
+  -webkit-backdrop-filter: blur(20px);
+  -o-backdrop-filter: blur(20px);
+  -moz-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-radius: 1px;
+}
+.modhead p{
+  font-size: 17pt;
+  padding-left: 50px;
+  font-weight: bold;
+}
+.closebtnmod{
+  background-color: white;
+    border-radius: 20px;
+    width: 70px;
+    height: 35px;
+    color: #000000;
+    font-size: 12pt;
+    border: none;
+    float: right;
+    position: relative;
+    bottom: 45px;
+    font-weight: bold;
+}
+.uploadbtn{
+  position: relative;
+  bottom: 150px;
+  background-color: transparent;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+.uploadbtn button{
+
+    background-color: #373737c2;
+    border: none;
+    font-size: 18pt;
+    color: rgb(255, 255, 255);
+    transition-duration: 0.2s;
+    border-radius: 45px;
+}
+.uploadbtn button:hover{
+
+  background-color: #6a6a6a81;
+  transition-duration: 0.2s;
+   
+}
+.uploadbtn span{
+
+  color: rgb(223, 223, 223);
+}
+
+.profilepicupload button{
+  
+    background-color: #373737c2;
+    border: none;
+    font-size: 18pt;
+    color: rgb(255, 255, 255);
+    transition-duration: 0.2s;
+    border-radius: 45px;
+    transition-duration: 0.2s;
+  
+}
+
+.profilepicupload button:hover{
+    background-color: #6a6a6a81;
+    transition-duration: 0.2s;
+}
+
+.profilepicupload{
+  position: relative;
+  bottom: 150px;
+  left: 40px;
+  background-color: transparent;
+  border: none;
+}
+.profilepicupload span{
+  color: rgb(255, 255, 255) !important;
+}
+#nohov img:hover{
+  transform: scale(1) !important;
+}
+.inputname{
+  position: relative;
+  bottom: 130px;
+}
+
+.inputname1{
+  position: relative;
+  bottom: 150px;
+ 
+}
+
+.inputname2{
+  position: relative;
+  bottom: 170px;
+}
+.inputname3{
+  position: relative;
+  bottom: 190px;
+  height: 0px;
+}
+
+.inputname5{
+  position: relative;
+  bottom: 93px;
+  height: 0px;
+}
+.inputname6{
+  position: relative;
+  height: 0px;
+  bottom: 66px;
+    margin-top: 70px;
+}
+.inputname7{
+  position: relative;
+  height: 0px;
+  margin-top: 103px;
+  bottom: 70px;
+}
+
+.inputname3 select{
+    position: relative;
+    top: -2px;
+    padding: 5px;
+    width: 100%;
+    height: 60px;
+    font-size: 12pt;
+    background: transparent;
+    border-radius: 5px;
+    font-family: "Lato", sans-serif;
+    border: 1px solid rgb(113, 118, 123);
+}
+.inputname4{
+  margin-top: 20px;
+}
+
+.inputname4 textarea{
+border: none !important;
+}
+.inputname4 textarea:focus {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+label {
+  font-size: 10pt;
+  letter-spacing: 1px;
+}
+textarea {
+    font-size: 12pt;
+    letter-spacing: 1px;
+}
+textarea {
+  background-color: transparent;
+  padding-top: 20px;
+  padding-left: 10px;
+  width: 100%;
+  line-height: 1.5;
+  height: 60px;
+  border-radius: 5px;
+  border: 1px solid rgb(113, 118, 123);
+}
+
+.inputname textarea:focus {
+  border: 2px solid rgb(29, 155, 240) !important;
+  box-shadow: none !important;
+  outline: none;
+}
+.inputname1 textarea:focus {
+  border: 2px solid rgb(29, 155, 240) !important;
+  box-shadow: none !important;
+  outline: none;
+}
+.inputname2 textarea:focus {
+  border: 2px solid rgb(29, 155, 240) !important;
+  box-shadow: none !important;
+  outline: none;
+}
+.inputname3 textarea:focus {
+  border: 2px solid rgb(29, 155, 240) !important;
+  box-shadow: none !important;
+  outline: none;
+}
+
+.inputname5 textarea:focus {
+  border: 2px solid rgb(29, 155, 240) !important;
+  box-shadow: none !important;
+  outline: none;
+}
+
+.inputname6 textarea:focus {
+  border: 2px solid rgb(29, 155, 240) !important;
+  box-shadow: none !important;
+  outline: none;
+}
+
+.inputname7 textarea:focus {
+  border: 2px solid rgb(29, 155, 240) !important;
+  box-shadow: none !important;
+  outline: none;
+}
+
+
+
+textarea:focus + label
+{
+  color: rgb(29, 155, 240) !important;
+
+}
+
+label {
+  margin-bottom: 10px;
+  position:relative;
+  top:40px;
+  padding:10px;
+  color:rgb(113, 118, 123);
+  font-weight: lighter;
+  
+}
+.updateprof{
+  margin: 10px;
+}
+.updateprof::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* tablist styles */
+.tab {
+    overflow: hidden;
+    border-bottom: 1px solid #5d5d5d80;
+    background-color: transparent;
+    padding-left: 15px;
+    display: flex;
+    width: 100%;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    color: rgb(113, 118, 123);
+  }
+  
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: rgba(221, 221, 221, 0.087);
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    color: rgb(231, 233, 234);
+    border-bottom: 3px solid rgb(29, 155, 240);
+    padding-bottom: 5px;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+  }
+
+  tbody{
+    border-top: 1px solid #5d5d5d80 !important;
+  }
+  tr{
+    border-top: 1px solid #5d5d5d80 !important;
+  }
+  td{
+    border-top: 1px solid #5d5d5d80!important;
+  }
+
+
+@media screen and (max-width: 650px) {
+    
+   
+    /* The Modal (background) edit profile mobile */
+  .modal {
+    padding-top: 0px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+  
+    
+  }
+  
+  
+  /* Modal Content edit profile */
+  .modal-content {
+    
+    
+    width: 100%;
+    height: 100%;
+   
+  }
+  
+  .modhead{
+      
+      padding: 10px;
+      position: fixed;
+      top: 0px;
+      width: 100%;
+     }
+  
+  .closebtnmod{
+    
+      margin-right: 15px;
+  }
+  
+     }
+  
+  
+     .userinfo img{
+      margin: 10px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    .userinfo{
+      display: flex;
+      justify-content: flex-start;
+      font-size: 13pt;
+      font-weight: bold;
+    }
+    .userinfo a{
+      color: rgb(231, 233, 234);
+      text-decoration: none;
+      font-size: 13pt;
+    }
+    .userinfo a:hover{
+      color: rgb(231, 233, 234);
+      text-decoration: underline;
+    }
+    #name{
+      margin-left: 10px;
+      margin-top: 20px;
+    }
+    #date{
+      margin-left: 5px;
+      margin-top: 24px;
+      color: rgb(113, 118, 123);
+      font-size: 10pt;
+    }
+    #nickname{
+      margin-left: 5px;
+      margin-top: 24px;
+      color: rgb(113, 118, 123);
+      font-size: 10pt;
+    }
+  .usercont{
+      margin-left: 20px;
+      margin-right: 20px;
+      margin-top: 10px;
+      font-size: 13pt;
+  }
+  .usercont img{
+      margin-top: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+      border-radius: 15px;
+      border: 1px solid #5d5d5d80;
+  }
+  .content{
+      padding-bottom: 20px;
+      border-bottom: 1px solid #5d5d5d80;
+      
+  }
+  .butns button{
+      background-color: transparent;
+      border: none;
+      color: rgb(113, 118, 123);
+  }
+  .butns i{
+      color: rgb(113, 118, 123);
+      font-size: 13pt !important;
+      transition-duration: 0.2s;
+  }
+  .butns i:hover{
+      background-color: rgba(29, 156, 240, 0.161);
+      color:  rgb(29, 155, 240);
+      border-radius: 50%;
+      transition-duration: 0.2s;
+  }
+  
+  #btncom i:hover{
+      background-color: rgba(61, 213, 30, 0.229) !important;
+      color:  rgb(78, 185, 57) !important;
+  }
+  
+  #btnlikes i:hover{
+      background-color: rgba(242, 58, 58, 0.261) !important;
+      color: rgb(242, 58, 58) !important;
+  }
+  .fa-heart{
+    color: rgb(242, 58, 58) !important;
+  }
+  
+  .butns{
+      margin-top: 10px;
+      display: flex;
+     justify-content: space-evenly;
+     color: rgb(113, 118, 123);
+     font-size: 11pt !important;
+  }
+  
+  @media screen and (max-width: 409px) {
+      .butns{
+         font-size: 9pt !important;
+      }
+      .butns i{
+          color: rgb(113, 118, 123);
+          font-size: 10pt !important;
+          transition-duration: 0.2s;
+      }
+      .userinfo img{
+          margin: 10px;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+        #name{
+          margin-left: 1px;
+        
+        }
+      
+     }
+  
+     /*sidenav icon styles */
+.fa-home{
+  color: #818181;
+}
+#home1{
+  color: #818181;
+}
+.fa-hashtag{
+  color: #818181;
+}
+#explore1{
+  color: #818181;
+}
+.fa-user{
+  color: white;
+}
+#profile1{
+  color: white;
+}

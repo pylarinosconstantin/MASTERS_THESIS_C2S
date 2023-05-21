@@ -1,0 +1,376 @@
+body{
+  height: 100vh;
+  overflow-y: hidden;
+  }
+  
+
+  .chat-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100%;
+  margin-top:20px;
+  }
+  
+  .chat-section {
+  width: 70%;
+  height: 80%;
+  background-color: transparent;
+  color: white;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  margin: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 6px rgb(0 0 0 / 21%);
+
+}
+  
+  
+  
+  .profilechat{
+     text-align: center;
+      padding: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(195, 195, 195, 0.353);
+      margin-left: 10px;
+      margin-right: 10px;
+      height:170px;
+  }
+  .profilechat img{
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+  }
+  .infochat{
+      padding-top: 10px;
+      padding-left: 10px;
+  }
+  .infochat span{
+      color: rgb(255, 255, 255);
+      font-size: 14pt;
+      font-weight: bold;
+  }
+  .profilechat button{
+    background-color: transparent;
+    border: none;
+  }
+  .fa-cog{
+      font-size: 20pt;
+  }
+  
+.navbar{
+  margin-bottom: 0px;
+}
+
+
+.contact-list {
+  background-color: transparent;
+  box-shadow: 0 0 6px rgb(0 0 0 / 21%);
+  width: 30%;
+  height: 83.5vh;
+  box-sizing: border-box;
+  border-right: 1px solid rgba(201, 201, 201, 0.394);
+  overflow-y: scroll;
+  color:black;
+}
+
+
+.contact-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  height: 55vh;
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+.message-sent {
+  align-self: flex-end;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.message-sent p{
+  color: white;
+  font-size: 11pt;
+  border-radius: 25px;
+  border-bottom-right-radius: 2px;
+  border-bottom: 4px solid rgb(29, 155, 240);
+  background-color: rgb(29, 155, 240);
+  padding: 13px;
+ width: fit-content;
+}
+
+.message-received {
+  align-self: flex-start;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.message-received span{
+  float: left !important;
+}
+
+
+.message-received p{
+  color: rgb(255, 255, 255);
+  font-size: 11pt;
+  border-radius: 25px;
+  border-bottom-left-radius: 2px;
+  border-bottom: 4px solid rgb(47, 51, 54);
+  background-color: rgb(47, 51, 54);
+  padding: 13px;
+}
+
+
+
+
+textarea {
+  background-color: transparent;
+  line-height: 1.5;
+  border: none;
+  font-size: 12pt;
+  margin-top: 8px;
+  padding-left: 15px;
+  width: 100%;
+  color: white;
+}
+
+.message-input-container button {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  margin-right: 26px;
+  position: relative;
+  bottom: 34px;
+}
+
+.time {
+  font-size: 10px;
+  color: gray;
+  margin-top: 10px;
+  float: right;
+  position: relative;
+  bottom: 10px;
+}
+
+.contact {
+  cursor: pointer;
+  padding: 10px;
+  
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  color: rgb(229, 229, 229);
+}
+
+
+.contact:hover {
+  background-color: #40516e47;
+}
+  
+    .contact img{
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+.lastmsgtime{
+  
+  font-size: 7pt;
+  color: gray;
+}
+
+
+.name{
+  position: relative;
+  
+  font-size: 12pt;
+}
+.msgreview{
+   
+  font-size: 8pt;
+  color: gray;
+}
+.align span{
+  display: grid;
+  position: relative;
+  top: 3px;
+}
+.align{
+   position:relative;
+   left:10px;
+}
+.activeusr{
+  height: 10px;
+  width: 10px;
+  background-color: rgb(41, 234, 73);
+  border-radius: 50%;
+  position: relative;
+  top: 33px;
+  right: 16px;
+
+}
+.al1{
+   display:flex;
+}
+
+.message-input-container {
+  width: -webkit-fill-available;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: fixed;
+  bottom: 12px;
+  padding: 20px;
+  background-color: rgb(32, 35, 39);
+  margin-right: 20px;
+  height: 65px;
+  color: black;
+  box-shadow: 0px 0px 10px -4px rgb(0 0 0 / 21%);
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+
+
+}
+
+
+
+
+
+.file-input-container {
+  display: inline-block;
+  position: relative;
+}
+
+.file-input-container input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.fa-image {
+  color: rgba(29, 156, 240, 0.899);
+  transition-duration: 0.2s;
+  font-size: 26px !important;
+}
+
+
+.file-input-container label {
+  display: inline-block;
+  padding: 10px;
+  background: transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  top: 0px;
+  left: 12px;
+  margin: 2px;
+  height:20px;
+}
+
+.fa-angle-left{
+  font-weight: bold;
+
+}
+
+.fa-paper-plane {
+  color: rgba(221, 241, 255, 0.899) !important;
+  transition-duration: 0.2s;
+  font-size: 28px !important;
+  position: relative;
+  top: 19px;
+  left: -6px;
+  margin: 5px;
+}
+.settingschat a{
+  color: black;
+  font-size: 12pt;
+  text-decoration: none;
+}
+.settingschat i{
+ padding-left: 5px;
+}
+.fa-arrow-circle-o-left{
+  font-size:20pt;
+}
+.goback{
+  position:relative;
+  z-index:100;
+  display:none;
+  text-align:left;
+}
+.goup{
+  position:relative;
+  bottom:0px;
+}
+
+@media screen and (max-width: 700px) {
+
+.goback{
+  display:block;
+  text-align:left;
+}
+.goup{
+  position:relative;
+  bottom:35px;
+}
+
+.chat-section{
+  width: 100%;
+  display:none;
+  height: 80%;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  margin: 20px;
+   border-radius: 0px; 
+  box-shadow: 0 0 6px rgb(0 0 0 / 21%);
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+.contact-list{
+ width: 100%;
+  height: 83%;
+  margin: 0px;
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-right: transparent;
+}
+
+.fa-arrow-circle-o-left{
+  color:rgb(255, 255, 255);
+}
+
+}
+
+#home1{
+  color: #818181 !important;
+}
+.fa-home{
+  color: #818181 !important;
+}
+#messages1{
+  color: #ffffff !important;
+}
+.fa-envelope{
+  color: #ffffff !important;
+}
+
+
+
+
+

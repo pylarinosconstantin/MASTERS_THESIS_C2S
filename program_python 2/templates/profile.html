@@ -1,0 +1,544 @@
+{%extends "master.html" %}
+{%block content%}
+
+<link rel="stylesheet" href="/css/profile.css">
+
+<div class="col-md-8 feed">
+
+	<div class="background">
+		<img id="black1" src="" id="background_prof">
+	</div>
+	<div class="margins">
+		<div class="profilepic">
+			<img src="" id="prof_phot">
+			<button id="followbtn" onclick="followprof()">
+                <span id="follow">Follow</span>
+                <span id="following" style="display:none">Following</span>
+            </button>
+			<button id="message-button" onclick="gotochat()">
+				<i class="fa fa-envelope" id="dm"></i>
+			</button>
+		</div>
+		<div class="nameprofile">
+			<p id="pnm"></p>
+			<div class="nicknameprof"><b id="pnm"><span id="pnm1"></span></b></div>
+		</div>
+		<div class="info">
+			<span class="bio" id="pbio"></span>
+		</div>
+		<div class="details">
+				<div class="space" ><span class="fa fa-map-marker"></span><span id="place"></span></div>
+				<div class="space" ><span class="fa fa-book" aria-hidden="true"></span><span id="occup"></span></div>
+		</div>
+		<div class="followers">
+			<div class="fl" ><span class="" id="followers"></span>Followers</div>
+			<div class="fl"><span class="" id="following1"></span>Following</div>
+		</div>	
+	</div>
+	
+		<div class="tab">
+			<button class="tablinks" onclick="openCity(event, 'Tokyo')">Contents</button>
+			<button class="tablinks" onclick="openCity(event, 'Paris')">Likes</button>
+		</div>
+		
+		<div id="Paris" class="tabcontent">
+			<div class="content" id="likedcont">
+
+				<div class="userinfo">
+					<img id="likeduserimg" src="">
+					<a href=""  id="likedname"></a>
+					<p id="nickname"></p>
+					<!--<p id="date"></p>-->
+				</div>
+				
+				<div class="usercont">
+					<img id="likedcontentimg" src="">
+					<span id="likedcont_text">
+					
+					<span>
+				</div>
+				<div class="butns">
+					<b id="views"><i class="fa fa-eye"></i></b>
+					<button id="btnlikes1"><i class="fa fa-heart"></i></button>
+					<button id="btnbook1"><i class="fa fa-bookmark"></i></button>
+				</div>
+			</div>
+		</div>
+		
+		<div id="Tokyo" class="tabcontent">
+			<div class="content" id="allcont">
+
+				<div class="userinfo">
+					<img id="userimg" src="">
+					<a href=""  id="name"></a>
+					<p id="nickname"></p>
+					<!--<p id="date"></p>-->
+				</div>
+				
+				<div class="usercont">
+					<img id="contentimg" src="">
+					<span id="cont_text">
+					
+					<span>
+				</div>
+				<div class="butns">
+					<b id="views"><i class="fa fa-eye"></i></b>
+					<button id="btnlikes"><i class="fa fa-heart"></i></button>
+					<button id="btnbook"><i class="fa fa-bookmark"></i></button>
+				</div>
+			</div>
+		</div>
+		
+</div>
+
+<div class="col-md-4 categories">
+	<input class="search" type="text" class="form-control" id="searchInput" name="" onkeyup="searchFunction()" placeholder="&#xF002;  Search C2S" style="font-family:Arial, FontAwesome">
+	<h3 class="cathead1"><b>Friends</b></h3>
+	<div class="categ_inner" id="allpeople">
+		
+			<!-- User list goes here -->
+			<section class="addpeople" id="searchp_">
+				
+					<div class="add">
+						<img id="searchuserimg" src="">
+					</div>
+					<div class="name"><a href=""  id="searchname"></a> <br> <span class="nickname" id="searchnickname">@JMay</span></div>
+					
+					<button id="followbtn22" onclick="followprof2()">
+						<span id="follow22">Follow</span>
+						<span id="following22" style="display:none">Following</span>
+					</button>
+			</section>
+	</div>
+
+	<div class="categ_inner">
+			<h3 class="cathead" id="cathead"><b>Categories</b></h3>
+		<div  id="categ_inner">
+			<section class="selectcateg">
+				<div class="horizontal">
+					<h4>Physics</h4>
+				</div>
+				<button><b>+</b></button>
+			</section>
+			<section class="selectcateg">
+				<div class="horizontal">
+					<h4>Python</h4>
+				</div>
+				<button><b>+</b></button>
+			</section>
+			<section class="selectcateg">
+				<div class="horizontal">
+					<h4>Maths</h4>
+					<!--<h6>2.70K Followers</h6>-->
+				</div>
+				<button><b>+</b></button>
+			</section>
+			<section class="selectcateg">
+				<div class="horizontal">
+					<h4>PHP</h4>
+				</div>
+				<button><b>+</b></button>
+			</section>
+			<section class="selectcateg">
+				<div class="horizontal">
+					<h4>MVC</h4>
+				</div>
+				<button><b>+</b></button>
+			</section>
+			<section class="selectcateg">
+				<div class="horizontal">
+					<h4>Bach</h4>
+				</div>
+				<button><b>+</b></button>
+			</section>
+		</div>
+	<div>	
+<div>	
+	
+
+<script>
+
+    function searchFunction() {
+		// Declare variables
+		var input, filter, sections, section, i, txtValue;
+		input = document.getElementsByClassName("search")[0];
+		filter = input.value.toUpperCase();
+		sections = document.getElementsByTagName("section");
+	  
+		// Loop through all sections, and hide those that don't match the search query
+		for (i = 0; i < sections.length; i++) {
+		  section = sections[i];
+		  if (section) {
+			txtValue = section.textContent || section.innerText;
+			if (txtValue.toUpperCase().indexOf(filter) > -1) {
+			  section.style.display = "";
+			} else {
+			  section.style.display = "none";
+			}
+		  }
+		}
+	  }
+
+	//tablist script
+	function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+
+    //get the id from the url
+    // Get the URL and split it into an array
+    const urlArray = window.location.href.split('/');
+
+    // Get the ID from the last element of the URL array
+    const id = urlArray[urlArray.length - 1];
+
+
+function getuserdataProfile(){
+    $.get('/profile1/' + id, function(res) {
+
+       
+        console.log(res);
+        
+        $("#user_id").val(res.id);
+		$("#user_id1").val(res.id);
+        $("#name").val(res.name);
+        $("#bio").val(res.bio);
+        $("#location").val(res.location);
+        $("#field").val(res.field);
+        $("#email").val(res.email);
+        $("#phone").val(res.phone);
+        $("#place").html(res.location);
+        $("#occup").html(res.field);
+        $("#pnm").html(res.name);
+        $("#pbio").html(res.bio);
+
+		var profilePhotoUrl = res.profilephoto ? `/uploads/${res.profilephoto}` : '/img/default_profile.png';
+		$("#prof_phot").attr("src", profilePhotoUrl);
+		$("#profilepic1").attr("src",`/uploads/${res.profilephoto}`);
+
+		
+        //create nickname
+        const fullName = document.getElementById('pnm').textContent;
+
+        // Extract the first 3 and last 2 letters
+        const firstName = fullName.substring(0, 3);
+        const lastName = fullName.substring(fullName.length - 2);
+
+        // Create the nickname
+        const nickname = `@${firstName}_${lastName}`;
+
+        // Set the text content of the span element
+        document.getElementById('pnm1').textContent = nickname;
+            });
+        }
+
+
+function createNickname(name) {
+	// Extract the first 3 and last 2 letters
+	const firstName = name.substring(0, 3);
+	const lastName = name.substring(name.length - 2);
+  
+	// Create the nickname
+	const nickname = `@${firstName}_${lastName}`;
+  
+	return nickname;
+  }
+  
+  function putperson(a) {
+	var userimg = `/uploads/${a.profilephoto}`;
+	var name = a.name;
+	var contentimg = a.filename ? `/uploads/${a.filename}` : '';
+	var cont_text = a.title;
+	var date = a.date;
+	var dateObj = new Date(date);
+	var time = dateObj.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+	var nickname = createNickname(name);
+	
+	var htm = `
+	  <div class="userinfo">
+		<img id="userimg_${a.id}" src="${userimg}">
+		<a href=""  id="name_${a.id}">${name}</a>
+		<p id="nickname_${a.id}">${nickname}</p>
+		<p id="date">${time}</p>
+	  </div>
+	  <div class="usercont">
+		<img id="contentimg_${a.id}" src="${contentimg}">
+		<span id="cont_text_${a.id}">
+		  ${cont_text}
+		<span>
+	  </div>
+	  <div class="butns">
+		<b id="views_${a.id}"><i class="fa fa-eye"></i></b>
+		<button id="btnlikes_${a.id}"><i class="fa fa-heart"></i></button>
+		<button id="btnbook_${a.id}"><i class="fa fa-bookmark"></i></button>
+	  </div>`;
+	
+	var container = $("#allcont");
+	var postDivs = container.children(".post");
+	var latestPostDate = new Date(date);
+
+	// insert the new post in the correct position based on date
+	for (var i = postDivs.length - 1; i >= 0; i--) {
+		var postDate = new Date(postDivs.eq(i).find("#date").text());
+		if (latestPostDate > postDate) {
+			postDivs.eq(i).after(htm);
+			return;
+		}
+	}
+	container.prepend(htm);
+}
+
+  function getcontentdata() {
+	$("#allcont").html("");
+	$.getJSON("/contentdataProfile1/"+ id, function(res) {
+	  console.log(res)
+	  for (i=0;i<res.length;i++) {
+		putperson(res[i]);
+	  }
+	});
+  }
+
+  function getcontentdataliked() {
+	$("#likedcont").html("");
+	$.getJSON("/likedcontentdataProfile/"+ id, function(res) {
+	  console.log(res)
+	  for (i=0;i<res.length;i++) {
+		putlikedperson(res[i]);
+	  }
+	});
+  }
+
+  function putlikedperson(a) {
+	var userimg = `/uploads/${a.profilephoto}`;
+	var name = a.name;
+	var contentimg = a.filename ? `/uploads/${a.filename}` : '';
+	var cont_text = a.title;
+	var date = a.date;
+	var dateObj = new Date(date);
+	var time = dateObj.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+	var nickname = createNickname(name);
+	
+	var htm = `
+	  <div class="userinfo">
+		<img id="likeduserimg_${a.id}" src="${userimg}">
+		<a href=""  id="likedname_${a.id}">${name}</a>
+		<p id="nickname_${a.id}">${nickname}</p>
+		<p id="date1">${time}</p>
+	  </div>
+	  <div class="usercont">
+		<img id="likedcontentimg_${a.id}" src="${contentimg}">
+		<span id="likedcont_text_${a.id}">
+		  ${cont_text}
+		<span>
+	  </div>
+	  <div class="butns">
+		<b id="views_${a.id}"><i class="fa fa-eye"></i></b>
+		<button id="btnlikes1_${a.id}"><i id="contlikes">${a.likes}</i><span class="fa fa-heart"></span></button>
+		<button id="btnbook1_${a.id}"><i id="contsaves">${a.saves}</i><i class="fa fa-bookmark"></i></button>
+	  </div>`;
+	
+	var container = $("#likedcont");
+	var postDivs = container.children(".post");
+	var latestPostDate = new Date(date);
+
+	// insert the new post in the correct position based on date
+	for (var i = postDivs.length - 1; i >= 0; i--) {
+		var postDate = new Date(postDivs.eq(i).find("#date1").text());
+		if (latestPostDate > postDate) {
+			postDivs.eq(i).after(htm);
+			return;
+		}
+	}
+	container.prepend(htm);
+}
+
+
+var hasfollow2=0;
+              function followprof2(id) {
+                  if (hasfollow2 == 0) {
+                      $.post('/folow/' + id, function(res) {
+                          $(`#followbtn22_${id}`).removeClass("follow22").addClass("following22");
+                          $(`#follow22_${id}`).hide();
+                          $(`#following22_${id}`).show();
+                          hasfollow2 = 1;
+                      })
+                  } else {
+                      $.post('/unfolow/' + id, function(res) {
+                          $(`#followbtn22_${id}`).removeClass("following22").addClass("follow22");
+                          $(`#following22_${id}`).hide();
+                          $(`#follow22_${id}`).show();
+                          hasfollow2 = 0;
+                      })
+                  }    
+              }
+              
+              function getFollowDataProfile1(id){
+                $.get('/showfollow/' + id, function(res) {
+                    console.log(res);
+                    if(res.following==true){ 
+                        $(`#followbtn22_${id}`).removeClass("follow22").addClass("following22");
+                        $(`#follow22_${id}`).hide();
+                        $(`#following22_${id}`).show();   
+                    }
+                
+                        });
+                    }
+
+
+var hasfollow=0;
+function followprof() {
+    const urlArray = window.location.href.split('/');
+    const id = urlArray[urlArray.length - 1];
+    if (hasfollow == 0) {
+        $.post('/folow/' + id, function(res) {
+            $("#followbtn").removeClass("follow").addClass("following");
+            $("#follow").hide();
+            $("#following").show();
+            hasfollow = 1;
+        })
+    } else {
+        $.post('/unfolow/' + id, function(res) {
+            $("#followbtn").removeClass("following").addClass("follow");
+            $("#following").hide();
+            $("#follow").show();
+            hasfollow = 0;
+        })
+    }    
+}
+
+function getFollowDataProfile(){
+	const urlArray = window.location.href.split('/');
+    const id = urlArray[urlArray.length - 1];
+    $.get('/showfollow/' + id, function(res) {
+        console.log(res);
+        if(res.following==true){ 
+            $("#followbtn").removeClass("follow").addClass("following");
+            $("#follow").hide();
+            $("#following").show();
+			
+            
+        }
+    
+            });
+        }
+        function countFollowers(){
+            $.get('/countfollow/' + id, function(res) {
+                console.log(res);
+                $("#followers").text(res.followers);
+                $("#following1").text(res.following);
+            });
+        }
+       
+		function gotochat() {
+			const urlArray = window.location.href.split('/');
+			const id = urlArray[urlArray.length - 1];
+			const url = "/gotoChat/"+ id;
+			$.post(url, function(res) { 
+				window.location.href = "/users?chat_id=" + res.chat_id;
+			});
+		}
+		
+
+		
+		function categoryContent() {
+			$("#categ_inner").html("");
+			const urlArray = window.location.href.split('/');
+			const id = urlArray[urlArray.length - 1];
+			$.get(`/userCategory/${id}`, function(res) {
+				console.log(res);
+				if (res.length > 0) {
+					for (var i = 0; i < res.length; i++) {
+						putcategory(res[i]);
+					}
+				} else {
+					$("#categ_inner").html("<h5><b>No categories selected</b></h5>");
+				}
+			}).fail(function() {
+				$("#msg").html(`<div class="alert-danger">Server error</div>`);  
+			});
+		}
+		
+
+		function getallusers() {
+			$("#allpeople").html("");
+			const urlArray = window.location.href.split('/');
+			const id = urlArray[urlArray.length - 1];
+			$.get(`/userFriends/${id}`, function(res) {
+				console.log(res);
+				if (res.length === 0) {
+					$("#allpeople").html("<h5><b>No friends selected</b></h5>");
+				} else {
+					console.log(res);
+					for (i = 0; i < res.length; i++) {
+						putusers(res[i]);
+						getFollowDataProfile1(res[i].id);
+					}
+				}
+			});
+		}
+
+  
+
+
+function putcategory(a) {
+	var name = a.name;
+	var id = a.id;
+	var htm = `
+		<section class="selectcateg" id="cat_${id}">
+			<div class="horizontal">
+				<h4>${name}</h4>
+			</div>
+		</section>
+		`;
+	$("#categ_inner").prepend(htm);
+}
+
+
+function putusers(a) {
+				
+	var userimg = a.profilephoto ? `/uploads/${a.profilephoto}` : '/img/default_profile.png';
+	var name = a.name;
+	var nickname = createNickname(name);
+  
+	var htm = `
+	  <section class="addpeople" id="searchp_${a.id}">
+		<div class="add">
+		  <img id="searchuserimg" src="${userimg}">
+		</div>
+		<div class="name">
+		  <a href="/profile/${a.id}"  id="searchname">${name}</a> <br>
+		  <span class="nickname" id="searchnickname">${nickname}</span>
+		</div>
+		<button id="followbtn22_${a.id}" onclick="followprof2(${a.id})">
+		  <span id="follow22_${a.id}">Follow</span>
+		  <span id="following22_${a.id}" style="display:none">Following</span>
+		</button>
+	  </section>
+	`;
+  
+	$("#allpeople").append(htm);
+  }
+
+  
+getallusers();
+categoryContent();
+getcontentdataliked();
+countFollowers();
+getFollowDataProfile();
+getFollowDataProfile1();
+getcontentdata();
+getuserdataProfile();
+
+</script>
+
+{% endblock %}

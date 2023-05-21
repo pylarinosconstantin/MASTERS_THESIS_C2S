@@ -1,0 +1,63 @@
+#home1{
+    color: #818181 !important;
+}
+.fa-home{
+    color: #818181 !important;
+}
+
+.category{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: rgba(20, 24, 30, 0.786);
+    border-radius: 20px;
+    height: 330px;
+    margin: 50px;
+    padding: 50px;
+}
+form input{
+    border-radius: 1px !important;
+}
+.btn1{
+    margin-top: 20px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    border: none;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    transition-duration: 0.1s;
+    font-size: 17pt;
+    height: 39px !important;
+    width: 82px !important;
+}
+.btn1:hover{
+    background-color: rgb(255, 255, 255) !important;
+    border-radius: 30px !important;
+    border: none !important; 
+}
+
+.categor{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: rgba(20, 24, 30, 0.786);
+    border-radius: 20px;
+    height: 330px;
+    margin-top: 50px;
+    padding: 20px;
+    width: 70%;
+    margin-bottom: 50px;
+}
+
+table{
+    width: 100%;
+    font-size: 16pt;
+    
+}
+table tr{
+    padding: 5px;
+    border-bottom: 1px solid gray;
+}
+.fa-trash:hover{
+    color: rgb(208, 59, 59);
+    cursor: pointer;
+}

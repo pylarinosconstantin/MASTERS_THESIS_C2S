@@ -1,0 +1,249 @@
+.audience img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    
+}  
+
+.custom-select1{
+    height: 42px;
+    color: rgb(29, 155, 240);
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent; 
+    cursor: pointer;
+    user-select: none;
+    width: 50%;
+    background-color: transparent;
+    font-size: 13pt;
+    margin-left: 20px;
+    margin-top: 8px;
+}
+
+
+.categories{
+  border-left: 1px transparent;
+  height: 100%;
+  display: block;
+}
+
+.thoughts{
+    padding-left: 40px;
+    padding-right: 10px;
+    border-bottom: 1px solid #5d5d5d80;
+    padding-bottom: 10px;
+    border-right: 1px solid #5d5d5d80;
+
+}
+
+.thoughts button{
+    font-size: 13pt;
+    font-weight: bold;
+    background-color: rgb(29, 155, 240);
+    border: none;
+    color: #f1f1f1;
+    transition-duration: 0.2s;
+    width: 70px;
+    height: 40px;
+    border-radius: 20px;
+    margin-top: 8px;
+    margin-right: 20px;
+  }
+  .thoughts textarea{
+    font-size: 16pt;
+  }
+  .select-selected{
+    font-size: 12pt;
+  }
+  .select-items{
+    font-size: 12pt;
+  }
+
+  .userinfo img{
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  .userinfo{
+    display: flex;
+    justify-content: flex-start;
+    font-size: 13pt;
+    font-weight: bold;
+  }
+  .userinfo a{
+    color: rgb(231, 233, 234);
+    text-decoration: none;
+    font-size: 13pt;
+    position: relative;
+    top: 20px;
+  }
+  .userinfo p{
+    position: relative;
+    top: 20px;
+    left: 10px;
+    color: #585858;
+  }
+  .userinfo a:hover{
+    color: rgb(231, 233, 234);
+    text-decoration: underline;
+  }
+  #name{
+    margin-left: 10px;
+    margin-top: 20px;
+  }
+  .liked {
+    color: red !important;
+}
+.saved {
+  color: rgb(255, 255, 255) !important;
+}
+  #date{
+    margin-left: 20px;
+    margin-top: 7px;
+    font-size: 7pt;
+    display: flex;
+  }
+
+  #nickname{
+    margin-left: 5px;
+    margin-top: 24px;
+    color: rgb(113, 118, 123);
+    font-size: 10pt;
+  }
+.usercont{
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 10px;
+    font-size: 13pt;
+}
+.usercont img{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border-radius: 15px;
+    border: 1px solid #5d5d5d80;
+}
+.content{
+    padding-bottom: 20px;
+   
+    border-right: 1px solid #5d5d5d80;
+}
+.butns button{
+    background-color: transparent;
+    border: none;
+    color: rgb(113, 118, 123);
+}
+.butns i{
+    color: rgb(113, 118, 123);
+    font-size: 13pt !important;
+    transition-duration: 0.2s;
+}
+.butns i:hover{
+    background-color: rgba(29, 156, 240, 0.161);
+    color:  rgb(29, 155, 240);
+    border-radius: 50%;
+    transition-duration: 0.2s;
+}
+
+#btncom i:hover{
+    background-color: rgba(61, 213, 30, 0.229) !important;
+    color:  rgb(78, 185, 57) !important;
+}
+
+#btnlikes i:hover{
+    background-color: rgba(242, 58, 58, 0.261) !important;
+    color: rgb(242, 58, 58) !important;
+}
+
+.butns{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    border-bottom: 1px solid #5d5d5d80;
+   justify-content: space-evenly;
+   color: rgb(113, 118, 123);
+   font-size: 11pt !important;
+   padding-bottom: 10px;
+}
+
+@media screen and (max-width: 409px) {
+    .butns{
+       font-size: 9pt !important;
+    }
+    .butns i{
+        color: rgb(113, 118, 123);
+        font-size: 10pt !important;
+        transition-duration: 0.2s;
+    }
+    .userinfo img{
+        margin: 10px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+      #name{
+        margin-left: 1px;
+      
+      }
+    
+   }
+
+   @media screen and (max-width: 690px) {
+        .selectmob{
+        display: grid !important;
+    }
+    .custom-select1{
+      height: 42px;
+      color: rgb(29, 155, 240);
+      padding: 8px 16px;
+      border: 1px solid transparent;
+      border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+      cursor: pointer;
+      user-select: none;
+      width: 198px;
+      background-color: transparent;
+      font-size: 13pt;
+       margin-left: 10px;
+      margin-top: 28px;
+    }
+    #date{
+      margin-left: 10px;
+      margin-top: 4px;
+      text-align: right;
+      
+    }
+    .userinfo p {
+      position: relative;
+      top: 19px;
+      left: 6px;
+      color: #585858;
+      font-size: 10pt;
+  }
+    .userinfo a{
+      font-size: 9pt;
+    }
+   }
+
+   .fa-heart:hover{
+    transition-duration: 0.2s;
+    color: rgb(242, 58, 58) !important;
+  }
+  .fa-heart{
+    transition-duration: 0.2s;
+    
+  }
+
+/*sidenav icon styles */
+.fa-home{
+  color: #818181;
+}
+#home1{
+  color: #818181;
+}
+.fa-hashtag{
+  color: white;
+}
+#explore1{
+  color: white;
+}

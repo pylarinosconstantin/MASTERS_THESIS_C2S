@@ -1,0 +1,264 @@
+{%extends "master.html" %}
+{%block content%}
+<link rel="stylesheet" href="/css/users.css">
+
+
+
+
+<div class="chat-container">
+	<div class="contact-list" id="contlist">
+	  <ul>
+	   
+	  </ul>
+	</div>
+  
+	<div class="chat-section" id="chat1">
+	  <div class="profilechat">
+		<div class="goback">
+			<button onclick="showList()"><i class="fa fa-angle-left"></i></button>
+		</div>
+		<div class="goup">
+			
+			<a id="gprf" href="/profile/">
+			<img id="chatimage" src="images/models.png">
+			</a>
+		
+			<div class="infochat">
+			<span id="chatuser"></span>
+			<span id="chatcity"></span>
+			</div>
+			<div id="myLinks" class="settingschat" style="display:none">
+			<a href="#">Delete conversation<i class="fa fa-eye-slash"></i></a><br>
+			</div>
+		</div>
+	  </div>
+	  <div class="messages" data-chat="chat1" id="msg1">
+		
+		
+	  </div>
+	  <div class="message-input-container">
+		<textarea placeholder="Type a message" id='mymessage'></textarea>
+		<div class="file-input-container">
+		  <input type="file" id="fileInput" multiple>
+		  <label for="fileInput">
+			<i class="fa fa-image" aria-hidden="true"></i>
+		  </label>
+		</div>
+		<button onclick='sendmessage()'><i class="fa fa-paper-plane"></i></button>
+	  </div>
+	</div>
+  </div>
+  
+<script>
+
+	
+function hideList() {
+	var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+// Only execute the code below 700px
+if (viewportWidth > 700) {
+	var div1 = document.getElementById("chat1");
+	var div2 = document.getElementById("contlist");
+	if (div1.style.display === "block") {
+	  div1.style.width = "80%";
+	  div2.style.display = "block";
+	  div2.style.width = "20%";
+	} 
+}
+}
+
+function showList() {
+  
+	 var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+// Only execute the code below 900px
+if (viewportWidth < 900) {
+	var div1 = document.getElementById("chat1");
+	var div2 = document.getElementById("contlist");
+		if (div1.style.display === "none") {
+		  div2.style.display = "none";
+		  div1.style.display = "block";
+		} else {
+		  div2.style.display = "block";
+		  div1.style.display = "none";
+		}
+  }
+}
+
+var activecv=0;
+$("#chat1").hide();
+function get_convs()
+{
+  var url=new URLSearchParams(window.location.search);
+  var cv=url.get("cv");
+  if(cv!=null)
+  {
+	  
+	 $.getJSON("/get_convs/"+cv, (res)=>{
+		 
+		  get_user(res.firstconv.id, res.firstconv.last_msg, res.firstconv.last_date);
+		 
+		  for (var i=0;i<res.convs.length;i++)
+		  { 
+			  get_user(res.convs[i].id,res.convs[i].last_msg, res.convs[i].last_date);
+			  
+		  }
+		  
+	 });
+  }
+  else
+  {
+	  $.getJSON("/get_convs", (res)=>{
+		//console.log(res);
+		 get_user(res.firstconv.id, res.firstconv.last_msg, res.firstconv.last_date);
+		//console.log(res.convs);
+		  for (var i=0;i<res.convs.length;i++)
+		  { 
+			  get_user(res.convs[i].id,res.convs[i].last_msg, res.convs[i].last_date);
+		  }
+	 });
+  }
+  
+  
+}
+var chatCounter = 1;
+
+function formatDateTime(dateStr) {
+  const date = new Date(dateStr);
+  const options = { weekday: 'short', hour: 'numeric', minute: 'numeric' };
+  return date.toLocaleString('en-US', options);
+}
+
+function get_user(id,lastmsg,lastdt) {
+    $.getJSON('/showConvUsers/' + id, function(data) {
+        res=data['conv_users'][0];
+
+        var im = res.image ;
+        if(im=="") im="test.png";
+        var lastmsgtime = formatDateTime(lastdt);
+        var htm = `
+        <li class="contact" onclick='loadmessages(${id})'>
+            <div class="al1">
+            <img id="profilepic100" src="/uploads/${im}">
+            <span class="activeusr"></span>
+            <p class="align">
+                <span class="name">${res.name}</span>
+                <span class="msgreview"></span>
+            </p>
+            </div>
+            <span class="lastmsgtime">${lastmsgtime}</span>
+        </li>
+        `;
+
+        $("#contlist ul").append(htm);
+        chatCounter++;
+    });
+}
+
+
+
+
+function loadmessages(id)
+{
+// Get the viewport width
+var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+// Only execute the code below 900px
+if (viewportWidth < 700) {
+  // Hide the contact-list div and show the profilechat div in full width
+  document.getElementById("contlist").style.display = "none";
+  document.getElementById("chat1").style.display = "block";
+  }
+  
+  
+  	activecv=id;
+	  $.getJSON('/showConvUsers/' + id, function(data) {
+		console.log(data);
+		var participants = data['conv_users'];
+		
+		// Access the first participant (assuming there is only one conversation participant)
+		var participant = participants[0];
+		
+		var im = participant.image || 'test.png';
+		$("#gprf").attr("href", "/profile/" + participant.id);
+		$("#chatimage").attr("src", "uploads/" + im);
+		$("#chatuser").html(participant.name);
+		//$("#chatcity").html(participant.city);
+		
+		$("#chat1").show();
+	  });
+  
+  
+  getallmessages();
+   
+ setInterval(function(){ getallmessages();},500);
+  
+}
+
+
+
+
+function getallmessages() {
+	var id = activecv;
+	var s1 = $("#msg1").html();
+	var currentUserID = "{{ session['idu'] }}"; // set currentUserID equal to session id
+  
+	$.getJSON('/showMessages/' + id, (data) => {
+	  var messages = data.messages;
+	  var s = "";
+  
+	  for (var i = 0; i < messages.length; i++) {
+		var msg = messages[i];
+		var html = "";
+  
+		var date = new Date(msg.timestamp);
+		var formattedDate = date.toLocaleString('en-US', {weekday: 'short', hour: 'numeric', minute: 'numeric'});
+  
+		if (msg.id_user == currentUserID) { // check if message was sent by current user
+		  html = `
+			<div class="message-sent">
+			  <p>${msg.text}</p>
+			  <span class="time">${formattedDate}</span>
+			</div>
+		  `;
+		} else {  
+		  html = `
+			<div class="message-received">
+			  <p>${msg.text}</p>
+			  <span class="time">${formattedDate}</span>
+			</div>
+		  `;
+		}
+  
+		s += html;
+	  }
+  
+	  if (s !== s1) {
+		$("#msg1").html(s);
+		document.getElementById("msg1").scrollTop = 10000000;
+	  }
+	});
+  }
+  
+  
+  
+
+
+function sendmessage()
+{
+    var msg=$("#mymessage").val();
+    var id = activecv;
+    $.ajax({
+        type: "POST",
+        url: "/sendMessage",
+        contentType: "application/json",
+        data: JSON.stringify({cv: id, msg: msg}),
+        success: function(response){
+            $("#mymessage").val("");
+        }
+    });
+}
+get_convs();
+hideList();
+</script>
+{% endblock %}

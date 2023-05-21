@@ -1,0 +1,86 @@
+{%extends "master.html" %}
+{%block content%}
+<head>
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<center>
+ADMIN categories<br>
+Here you can edit, add and remove users and categories.
+
+<div class="category">
+    <h1>Add Category</h1>
+    <form id="addcategory">
+        <div class="form-group controls">
+            <input type="text" class="form-control" id="add_categ" name="add_categ" required>
+        </div>
+        <button type="submit" id="btnhide" class="btn1">Add</button>
+        <div id="msg"></div>
+    </form>
+</div>
+
+<div class="categor">
+    <h1>Categories</h1>
+    <table id="categ_inner">
+        
+      </table>
+</div>
+
+</center>
+
+<script>
+	// admin category upload
+	$("#addcategory").submit(function(event) {
+        event.preventDefault();
+        $.post("/addcategory", $("#addcategory").serialize(), function(res) {
+            if (res.done === false) {
+                console.log(res);
+                $("#msg").html(`<div class="alert-danger">Upload error</div>`);  
+            } else {
+                window.location.href = "/adminCat";
+            }
+        }).fail(function() {
+            $("#msg").html(`<div class="alert-danger">Server error</div>`);  
+        });
+    });
+
+
+    function categoryContent() {
+        $("#categ_inner").html("");
+        $.getJSON("/categoryContent", function(res) {
+            console.log(res);
+            for (var i = 0; i < res.length; i++) {
+                putcategory(res[i]);
+            }
+        }).fail(function() {
+            $("#msg").html(`<div class="alert-danger">Server error</div>`);  
+        });
+    }
+    
+    function putcategory(a) {
+        var name = a.name;
+        var id = a.id;
+        var htm = `
+            <tr id="cat_${id}">
+                <td>${name}</td>
+                <td><i onClick="delCategory(${id})" class="fa fa-trash"></i></td>
+            </tr>`;
+        $("#categ_inner").prepend(htm);
+    }
+    
+    function delCategory(id){
+        $.get("/delCategory/" + id, function(res) {
+            console.log(res);
+            if (res === "true") {
+                $("#cat_" + id).hide();  
+            } else {
+                alert('Network error');
+            }
+        }).fail(function() {
+            alert('Network error');
+        });
+    }
+
+categoryContent();
+    
+</script>
+{% endblock %}

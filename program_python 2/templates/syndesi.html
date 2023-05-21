@@ -1,0 +1,41 @@
+{%extends "master.html" %}
+{%block content%}
+<div class="space">
+
+<div class="square">
+<h2 class="title">Log In</h2>
+
+<form action="" id="frmsyndesi" class="formstyle">
+  <div class="form-group">
+    <label id="email1" class="control-label" for="email">Email address:</label>
+    <input type="email" class="form-control" id="email" name="email" onfocus="myFunction()" required>
+  </div>
+  <div class="form-group">
+    <label id="pwd1" for="pwd">Password:</label>
+    <input type="password" class="form-control" id="password" name="password" onfocus="myFunction1()" required>
+  </div>
+ 
+ 
+  <center>
+    <div id="msg"></div>
+    <button type="submit" class="btn1">LOG IN</button>
+    </center>
+  
+  
+</form>
+</div>
+</div>
+<script>
+
+  function myFunction() {
+    let x = document.getElementById("email1");
+   x.style.color="white"
+  }
+  function myFunction1() {
+    let x = document.getElementById("pwd1");
+   x.style.color="white"
+  }
+ 
+  </script>
+
+{% endblock %}

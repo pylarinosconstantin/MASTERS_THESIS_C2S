@@ -1,0 +1,809 @@
+{%extends "master.html" %}
+{%block content%}
+
+<link rel="stylesheet" href="/css/profile.css">
+
+<div class="col-md-8 feed">
+
+	<div class="background">
+		<img id="black1" src="" id="background_prof">
+	</div>
+	<div class="margins">
+		<div class="profilepic">
+			<img src="" id="prof_phot">
+			<button id="myBtn">Edit profile</button>
+			<button id="update-button" onclick="openModal('update-modal')">
+				<i class="fa fa-camera"></i>
+			</button>
+		</div>
+		<div class="nameprofile">
+			<p id="pnm"></p>
+			<div class="nicknameprof"><b id="pnm"><span id="pnm1"></span></b></div>
+		</div>
+		<div class="info">
+			<span class="bio" id="pbio"></span>
+		</div>
+		<div class="details">
+				<div class="space" ><span class="fa fa-map-marker"></span><span id="place"></span></div>
+				<div class="space" ><span class="fa fa-book" aria-hidden="true"></span><span id="occup"></span></div>
+		</div>
+		<div class="followers">
+			<div class="fl" ><span class="" id="followers"></span>Followers</div>
+			<div class="fl"><span class="" id="following1"></span>Following</div>
+		</div>		
+	</div>
+
+	<!-- The Modal edit profile -->
+	<div id="myModal" class="modal modalupload">
+		<!-- Modal content -->
+		<div class="modal-content">
+		<form id="profileupdate" action="" method="post" enctype="multipart/form-data">
+			<div class="modhead">
+				<span class="close">&times;</span>
+				<p>Edit profile</p>
+				<button id="updprof"  type="submit" class="closebtnmod">Save</button>
+			</div>
+			<div class="updateprof">
+				<div class="inputname">
+						<input type="hidden" name="user_id" id="user_id">
+						<div id="msgsettings">
+                            
+						</div>
+				</div>
+				<div class="inputname">
+					<label for="name">Name</label>
+					<textarea id="name" name="name" rows="5" cols="33" ></textarea>
+				</div>
+				<div class="inputname1">
+					<label for="bio">Bio</label>
+					<textarea id="bio" name="bio" rows="15" cols="53" ></textarea>
+				</div>
+				<div class="inputname2">
+					<label for="location">Location</label>
+					<textarea id="location" name="location" rows="5" cols="33" ></textarea>
+				</div>
+				<div class="inputname3">
+					<label for="field">Field of study</label>
+					<select id="field" name="field" class="field">
+						<option disabled selected value>Select a field</option>
+						<option value="Humanities and Social Science">Humanities and social science</option>
+						<option value="Linguistics and History">Linguistics and History</option>
+						<option value="Arts">Arts</option>
+						<option value="Economics">Economics</option>
+						<option value="Political Science">Political science</option>
+						<option value="Psychology">Psychology</option>
+						<option value="Medicine">Medicine</option>
+						<option value="Biology">Biology</option>
+						<option value="Chemistry">Chemistry</option>
+						<option value="Engineering">Engineering</option>
+						<option value="Computer Science">Computer science</option>
+						<option value="Law">Law</option>
+						<option value="General Ocupation">Other</option>
+					</select>
+				</div>
+				<div class="inputname5">
+					<label for="email">Email</label>
+					<textarea id="email" name="email" rows="15" cols="53" ></textarea>
+				</div>
+				<div class="inputname6">
+					<label for="password">New password</label>
+					<textarea id="password" name="password" rows="15" cols="53" ></textarea>
+				</div>
+				<div class="inputname6">
+					<label for="confpwd">Confirm password</label>
+					<textarea id="confpwd" name="confpwd" rows="15" cols="53" ></textarea>
+				</div>
+				<div class="inputname7">
+					<label for="phone">Phone</label>
+					<textarea id="phone" name="phone" rows="15" cols="53" ></textarea>
+				</div>
+				
+			</div>
+		</form>
+		</div>
+	</div>
+
+	<!-- update photo modal -->
+	<div id="update-modal" class="modal">
+		<div class="modal-content">
+			<form id="profileupdateimg" action="" method="post" enctype="multipart/form-data">
+				<div class="modhead">
+				<span class="close" onclick="closeModal('update-modal')">&times;</span>
+					<p>Profile Photo </p>
+					<button hidden id="updprof1"  type="submit" class="closebtnmod">Save</button>
+				</div>
+				<div id="nohov" class="profilepicup">
+					<img id="profilepic1" src="">
+				</div>
+				<div class="profilepicupload">
+				<input type="file" accept="images/*" name="profile_photo" id="profile_photo"  style="display:none"/>
+				<button type="button" onClick="showModal2()" id="updprofimg">
+					<span class="fa fa-camera" style="color:black"></span>
+				</button>
+				<input type="hidden" name="user_id1" id="user_id1">
+				</div>
+				<div id="profmsgup">
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+	
+		<div class="tab">
+			<button class="tablinks" onclick="openCity(event, 'Tokyo')">My Contents</button>
+			<button class="tablinks" onclick="openCity(event, 'Paris')">Likes</button>
+		</div>
+		
+		<div id="Paris" class="tabcontent">
+			<div class="content" id="likedcont">
+
+				<div class="userinfo">
+					<img id="likeduserimg" src="">
+					<a href=""  id="likedname"></a>
+					<p id="nickname"></p>
+					<!--<p id="date"></p>-->
+				</div>
+				
+				<div class="usercont">
+					<img id="likedcontentimg" src="">
+					<span id="likedcont_text">
+					
+					<span>
+				</div>
+				<div class="butns">
+					<b id="views"><i class="fa fa-eye"></i></b>
+					<button id="btnlikes1"><i class="fa fa-heart"></i></button>
+					<button id="btnbook1"><i class="fa fa-bookmark"></i></button>
+				</div>
+			</div>
+		</div>
+		
+		<div id="Tokyo" class="tabcontent">
+			<div class="content" id="allcont">
+
+				<div class="userinfo">
+					<img id="userimg" src="">
+					<a href=""  id="name"></a>
+					<p id="nickname"></p>
+					<!--<p id="date"></p>-->
+				</div>
+				
+				<div class="usercont">
+					<img id="contentimg" src="">
+					<span id="cont_text">
+					
+					<span>
+				</div>
+				<div class="butns">
+					<b id="views"><i class="fa fa-eye"></i></b>
+					<button id="btnlikes"><i class="fa fa-heart"></i></button>
+					<button id="btnbook"><i class="fa fa-bookmark"></i></button>
+				</div>
+			</div>
+		</div>
+		
+</div>
+
+	<div class="col-md-4 categories">
+		<input class="search" type="text" class="form-control" id="searchInput" name="" onkeyup="searchFunction()" placeholder="&#xF002;  Search C2S" style="font-family:Arial, FontAwesome">
+		<h3 class="cathead1"><b>My Friends</b></h3>
+		<div class="categ_inner" id="allpeople">
+			
+				<!-- User list goes here -->
+				<section class="addpeople" id="searchp_">
+					
+						<div class="add">
+							<img id="searchuserimg" src="">
+						</div>
+						<div class="name"><a href=""  id="searchname"></a> <br> <span class="nickname" id="searchnickname">@JMay</span></div>
+						
+						<button id="followbtn" onclick="followprof()">
+							<span id="follow">Follow</span>
+							<span id="following" style="display:none">Following</span>
+						</button>
+				</section>
+		</div>
+
+		<div class="categ_inner">
+				<h3 class="cathead" id="cathead"><b>My Categories</b></h3>
+			<div  id="categ_inner">
+				<section class="selectcateg">
+					<div class="horizontal">
+						<h4>Physics</h4>
+					</div>
+					<button><b>+</b></button>
+				</section>
+				<section class="selectcateg">
+					<div class="horizontal">
+						<h4>Python</h4>
+					</div>
+					<button><b>+</b></button>
+				</section>
+				<section class="selectcateg">
+					<div class="horizontal">
+						<h4>Maths</h4>
+						<!--<h6>2.70K Followers</h6>-->
+					</div>
+					<button><b>+</b></button>
+				</section>
+				<section class="selectcateg">
+					<div class="horizontal">
+						<h4>PHP</h4>
+					</div>
+					<button><b>+</b></button>
+				</section>
+				<section class="selectcateg">
+					<div class="horizontal">
+						<h4>MVC</h4>
+					</div>
+					<button><b>+</b></button>
+				</section>
+				<section class="selectcateg">
+					<div class="horizontal">
+						<h4>Bach</h4>
+					</div>
+					<button><b>+</b></button>
+				</section>
+			</div>
+		<div>	
+	<div>	
+		
+		
+</div>
+
+<script>
+
+
+	function searchFunction() {
+		// Declare variables
+		var input, filter, sections, section, i, txtValue;
+		input = document.getElementsByClassName("search")[0];
+		filter = input.value.toUpperCase();
+		sections = document.getElementsByTagName("section");
+	  
+		// Loop through all sections, and hide those that don't match the search query
+		for (i = 0; i < sections.length; i++) {
+		  section = sections[i];
+		  if (section) {
+			txtValue = section.textContent || section.innerText;
+			if (txtValue.toUpperCase().indexOf(filter) > -1) {
+			  section.style.display = "";
+			} else {
+			  section.style.display = "none";
+			}
+		  }
+		}
+	  }
+	  
+//	getmycontents();
+
+	//modal script
+	// Get the modal
+	var modal = document.getElementById("myModal");
+	// Get the button that opens the modal
+	var btn = document.getElementById("myBtn");
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+	// When the user clicks the button, open the modal 
+	btn.onclick = function() {
+  		modal.style.display = "block";
+	}
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+
+
+	//tablist script
+	function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+
+
+function showModal1(){
+	document.getElementById('background_photo').click();
+}
+function showModal2(){
+	document.getElementById('profile_photo').click();
+}
+
+
+
+function closebg(){
+	document.getElementById("black").src="/img/default_background.png";
+	document.getElementById("black1").src="/img/default_background.png";
+}
+
+
+
+function getuserdata(){
+    $.get("/userdata", function(res){
+        console.log(res);
+		$("#user_id").val(res.id);
+		$("#user_id1").val(res.id);
+        $("#name").val(res.name);
+        $("#bio").val(res.bio);
+        $("#location").val(res.location);
+        $("#field").val(res.field);
+        $("#email").val(res.email);
+        $("#phone").val(res.phone);
+        $("#place").html(res.location);
+        $("#occup").html(res.field);
+        $("#pnm").html(res.name);
+        $("#pbio").html(res.bio);
+
+		var profilePhotoUrl = res.profilephoto ? `uploads/${res.profilephoto}` : '/img/default_profile.png';
+		$("#prof_phot").attr("src", profilePhotoUrl);
+		$("#profilepic1").attr("src",`uploads/${res.profilephoto}`);
+		
+        //create nickname
+        const fullName = document.getElementById('pnm').textContent;
+
+        // Extract the first 3 and last 2 letters
+        const firstName = fullName.substring(0, 3);
+        const lastName = fullName.substring(fullName.length - 2);
+
+        // Create the nickname
+        const nickname = `@${firstName}_${lastName}`;
+
+        // Set the text content of the span element
+        document.getElementById('pnm1').textContent = nickname;
+            });
+        }
+
+
+$("#profileupdate").submit(function(event){
+	event.preventDefault();
+
+	var newpwd = document.getElementById("password").value;
+	var confpwd = document.getElementById("confpwd").value;
+	if (newpwd !== confpwd) {
+			$("#msgsettings").html(`<div class='alert alert-danger'>
+				<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+				<strong><center>New password and confirm password do not match.</center></strong>
+			</div>`);
+	} else {
+	   $.post("/profileUpdate",$("#profileupdate").serialize(),function(res){
+					
+						if(res=="true")
+						{
+						
+						$("#msgsettings").html(`<div class='alert alert-success'>
+							<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+				<strong><center>Update complete</center></strong>
+			</div>`);
+						
+						$.get("/userdata", function(res){
+							console.log(res);
+							
+							$("#user_id").val(res.id);
+							$("#name").val(res.name);
+							$("#bio").val(res.bio);
+							$("#location").val(res.location);
+							$("#field").val(res.field);
+							$("#email").val(res.email);
+							$("#pwd").val(res.password);
+							$("#phone").val(res.phone);
+							$("#place").html(res.location);
+							$("#pnm").html(res.name);
+							$("#pbio").html(res.bio);
+							
+							
+					
+							//create nickname
+							const fullName = document.getElementById('pnm').textContent;
+					
+							// Extract the first 3 and last 2 letters
+							const firstName = fullName.substring(0, 3);
+							const lastName = fullName.substring(fullName.length - 2);
+					
+							// Create the nickname
+							const nickname = `@${firstName}_${lastName}`;
+					
+							// Set the text content of the span element
+							document.getElementById('pnm1').textContent = nickname;
+								});
+						}
+						else
+						{
+						alert("Error please refresh the page.")
+						
+						}
+					
+					});
+	}
+
+
+
+	
+});
+
+function openModal(modalId) {
+	var modal = document.getElementById(modalId);
+	modal.style.display = "block";
+  }
+  function closeModal(modalId) {
+	var modal = document.getElementById(modalId);
+	modal.style.display = "none";
+  }
+
+
+//update photo scipt 
+//profile change photo frontend
+	function showModal2() {
+		document.getElementById("profile_photo").click();
+	  }
+
+// When the user clicks anywhere outside of the update modal, close it
+var updateModal = document.getElementById("update-modal");
+var editModal = document.getElementById("myModal");
+window.onclick = function(event) {
+  if (event.target == updateModal) {
+    updateModal.style.display = "none";
+  }
+  if (event.target == editModal) {
+    editModal.style.display = "none";
+  }
+}
+
+
+document.getElementById("profile_photo").addEventListener("change", function() {
+    var profilePic = document.getElementById("profilepic1");
+    var fd=new FormData();
+   
+    var f=this.files[0];
+    fd.append('file1',f);
+    
+    // Store the file object in a variable before making the AJAX request
+    var file = this.files[0];
+    
+    $.ajax({
+        url: '/profilePhotoUpload',
+        type: 'post',
+        data: fd,
+        contentType: false,
+        processData: false,
+        success: function(response){
+			if(response =="true"){
+				$.get("/userdata", function(res){
+					$("#profilepic1").attr("src",`uploads/${res.profilephoto}`);
+						});
+
+				var profilePicInProfile = document.querySelector(".profilepic img");
+				profilePicInProfile.src = URL.createObjectURL(file);
+
+				
+			}else{
+				alert('file not uploaded');
+			}
+		},
+    });
+});
+
+
+
+
+function createNickname(name) {
+	// Extract the first 3 and last 2 letters
+	const firstName = name.substring(0, 3);
+	const lastName = name.substring(name.length - 2);
+  
+	// Create the nickname
+	const nickname = `@${firstName}_${lastName}`;
+  
+	return nickname;
+  }
+  
+  function putperson(a) {
+	var userimg = `uploads/${a.profilephoto}`;
+	var name = a.name;
+	var contentimg = a.filename ? `uploads/${a.filename}` : '';
+	var cont_text = a.title;
+	var date = a.date;
+	var dateObj = new Date(date);
+	var time = dateObj.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+	var nickname = createNickname(name);
+	var htm = `
+	<div id="cont_${a.id}">
+	  <div class="userinfo">
+		<img id="userimg_${a.id}" src="${userimg}">
+		<a href=""  id="name_${a.id}">${name}</a>
+		<p id="nickname_${a.id}">${nickname}</p>
+		<p id="date">${time}</p>
+	  </div>
+	  <div class="usercont">
+		<img id="contentimg_${a.id}" src="${contentimg}">
+		<span id="cont_text_${a.id}">
+		  ${cont_text}
+		<span>
+	  </div>
+	  <div class="butns">
+		<b id="views_${a.id}"><i class="fa fa-eye"></i></b>
+		<button id="btnlikes_${a.id}"><i class="fa fa-heart"></i></button>
+		<button id="btnbook_${a.id}"><i class="fa fa-bookmark"></i></button>
+		<button onClick="removeContent(${a.id})"><b><i class="fa fa-trash-o"></i></b></button>
+	  </div>
+	</div>`;
+	
+	var container = $("#allcont");
+	var postDivs = container.children(".post");
+	var latestPostDate = new Date(date);
+
+	// insert the new post in the correct position based on date
+	for (var i = postDivs.length - 1; i >= 0; i--) {
+		var postDate = new Date(postDivs.eq(i).find("#date").text());
+		if (latestPostDate > postDate) {
+			postDivs.eq(i).after(htm);
+			return;
+		}
+	}
+	container.prepend(htm);
+}
+
+  
+  function putlikedperson(a) {
+	var userimg = `uploads/${a.profilephoto}`;
+	var name = a.name;
+	var contentimg = a.filename ? `uploads/${a.filename}` : '';
+	var cont_text = a.title;
+	var date = a.date;
+	var dateObj = new Date(date);
+	var time = dateObj.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+	var nickname = createNickname(name);
+	
+	var htm = `
+	  <div class="userinfo">
+		<img id="likeduserimg_${a.id}" src="${userimg}">
+		<a href=""  id="likedname_${a.id}">${name}</a>
+		<p id="nickname_${a.id}">${nickname}</p>
+		<p id="date1">${time}</p>
+	  </div>
+	  <div class="usercont">
+		<img id="likedcontentimg_${a.id}" src="${contentimg}">
+		<span id="likedcont_text_${a.id}">
+		  ${cont_text}
+		<span>
+	  </div>
+	  <div class="butns">
+		<b id="views_${a.id}"><i class="fa fa-eye"></i></b>
+		<button id="btnlikes1_${a.id}"><i id="contlikes">${a.likes}</i><span class="fa fa-heart"></span></button>
+		<button id="btnbook1_${a.id}"><i id="contsaves">${a.saves}</i><i class="fa fa-bookmark"></i></button>
+	  </div>`;
+	
+	var container = $("#likedcont");
+	var postDivs = container.children(".post");
+	var latestPostDate = new Date(date);
+
+	// insert the new post in the correct position based on date
+	for (var i = postDivs.length - 1; i >= 0; i--) {
+		var postDate = new Date(postDivs.eq(i).find("#date1").text());
+		if (latestPostDate > postDate) {
+			postDivs.eq(i).after(htm);
+			return;
+		}
+	}
+	container.prepend(htm);
+}
+
+
+  function getcontentdata() {
+	$("#allcont").html("");
+	$.getJSON("/contentdataProfile", function(res) {
+	  console.log(res)
+	  for (i=0;i<res.length;i++) {
+		putperson(res[i]);
+	  }
+	});
+  }
+
+  function likedContent() {
+	$("#likedcont").html("");
+	$.getJSON("/likedContent", function(res) {
+	  console.log(res)
+	  for (i=0;i<res.length;i++) {
+		putlikedperson(res[i]);
+	  }
+	});
+  }
+
+  function countFollowers(){
+	$.get("/followersprofile", function(res) {
+		console.log(res);
+		$("#followers").text(res.followers);
+		$("#following1").text(res.following);
+	});
+}
+
+function categoryContent() {
+						$("#categ_inner").html("");
+						$.getJSON("/categoryContent1", function(res) {
+							console.log(res);
+							for (var i = 0; i < res.length; i++) {
+								putcategory(res[i]);
+							}
+						}).fail(function() {
+							$("#msg").html(`<div class="alert-danger">Server error</div>`);  
+						});
+					}
+					
+					function putcategory(a) {
+						var name = a.name;
+						var id = a.id;
+						var htm = `
+							<section class="selectcateg" id="cat_${id}">
+								<div class="horizontal">
+									<h4>${name}</h4>
+								</div>
+								<button onClick="addCategory(${id})"><b>+</b></button>
+							</section>
+							`;
+						$("#categ_inner").prepend(htm);
+					}
+
+					function addCategory(id){
+						$.get("/addCategory/" + id, function(res) {
+							console.log(res);
+							if (res === "true") {
+								$("#cat_" + id).hide();  
+							} else {
+								alert('Network error');
+							}
+						}).fail(function() {
+							alert('Network error');
+						});
+					}
+
+
+function categoryContent() {
+						$("#categ_inner").html("");
+						$.getJSON("/categoryMyContent", function(res) {
+							console.log(res);
+							for (var i = 0; i < res.length; i++) {
+								putcategory(res[i]);
+							}
+						}).fail(function() {
+							$("#msg").html(`<div class="alert-danger">Server error</div>`);  
+						});
+					}
+					
+					function putcategory(a) {
+						var name = a.name;
+						var id = a.id;
+						var htm = `
+							<section class="selectcateg" id="cat_${id}">
+								<div class="horizontal">
+									<h4>${name}</h4>
+								</div>
+								<button onClick="removeCategory(${id})"><b><i class="fa fa-trash-o"></i></b></button>
+							</section>
+							`;
+						$("#categ_inner").prepend(htm);
+					}
+
+					function removeCategory(id){
+						$.get("/removeCategory/" + id, function(res) {
+							console.log(res);
+							if (res === "true") {
+								$("#cat_" + id).hide();  
+							} else {
+								alert('Network error');
+							}
+						}).fail(function() {
+							alert('Network error');
+						});
+					}
+
+					function removeContent(id){
+						$.get("/removeContent/" + id, function(res) {
+							console.log(res);
+							if (res === "true") {
+								$("#cont_" + id).hide();  
+							} else {
+								alert('Network error');
+							}
+						}).fail(function() {
+							alert('Network error');
+						});
+					}
+
+
+
+					function putusers(a) {
+				
+						var userimg = a.profilephoto ? `uploads/${a.profilephoto}` : '/img/default_profile.png';
+						var name = a.name;
+						var nickname = createNickname(name);
+					  
+						var htm = `
+						  <section class="addpeople" id="searchp_${a.id}">
+							<div class="add">
+							  <img id="searchuserimg" src="${userimg}">
+							</div>
+							<div class="name">
+							  <a href="/profile/${a.id}"  id="searchname">${name}</a> <br>
+							  <span class="nickname" id="searchnickname">${nickname}</span>
+							</div>
+							<button id="followbtn_${a.id}" onclick="followprof(${a.id})">
+							  <span id="follow_${a.id}">Follow</span>
+							  <span id="following_${a.id}" style="display:none">Following</span>
+							</button>
+						  </section>
+						`;
+					  
+						$("#allpeople").append(htm);
+					  }
+		
+					  
+					  var hasfollow=0;
+					  function followprof(id) {
+						  if (hasfollow == 0) {
+							  $.post('/folow/' + id, function(res) {
+								  $(`#followbtn_${id}`).removeClass("follow").addClass("following");
+								  $(`#follow_${id}`).hide();
+								  $(`#following_${id}`).show();
+								  hasfollow = 1;
+							  })
+						  } else {
+							  $.post('/unfolow/' + id, function(res) {
+								  $(`#followbtn_${id}`).removeClass("following").addClass("follow");
+								  $(`#following_${id}`).hide();
+								  $(`#follow_${id}`).show();
+								  hasfollow = 0;
+							  })
+						  }    
+					  }
+					  
+					  function getFollowDataProfile(id){
+						$.get('/showfollow/' + id, function(res) {
+							console.log(res);
+							if(res.following==true){ 
+								$(`#followbtn_${id}`).removeClass("follow").addClass("following");
+								$(`#follow_${id}`).hide();
+								$(`#following_${id}`).show();
+								
+							}
+						
+								});
+							}
+
+							
+							function getallusers() {
+								$("#allpeople").html("");
+								$.getJSON("/followed_users", function(res) {
+								  for (i = 0; i < res.length; i++) {
+									putusers(res[i]);
+									getFollowDataProfile(res[i].id);
+								  }
+								});
+							  }
+
+
+					
+getallusers();
+categoryContent();
+likedContent();
+countFollowers();
+getcontentdata();
+getuserdata();
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+.fa-bookmark{
+    color: white !important;
+}
+#bookmark1{
+    color: white;
+}
+.butns span{
+  color: rgb(236 57 57) !important;
+  font-size: 13pt !important;
+}
+#contlikes{
+  font-style: normal;   
+}
+#contsaves{
+  font-style: normal;   
+}
+#date1 {
+  margin-left: 20px;
+  margin-top: 3px;
+  font-size: 10pt;
+  display: flex;
+}
+
+        /*sidenav icon styles */
+        .fa-home{
+            color: #818181;
+          }
+          #home1{
+            color: #818181;
+          }
+          .fa-hashtag{
+            color: #818181 !important;
+          }
+          #explore1{
+            color: #818181 !important;
+          }
+          .fa-user{
+            color: #818181;
+          }
+          #profile1{
+            color: #818181;
+          }
+          .fa-envelope{
+            color: #818181;
+          }
+          #messages1{
+            color: #818181;
+          }
+          .fa-bell{
+            color: #818181;
+          }
+          #notifications1{
+            color: #818181;
+          }
+
+          

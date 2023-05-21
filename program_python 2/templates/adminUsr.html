@@ -1,0 +1,90 @@
+{%extends "master.html" %}
+{%block content%}
+<head>
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<center>
+Users Panel<br>
+Here you can edit, add and remove users.
+
+<div class="category">
+    <h1>Add User</h1>
+    <form id="addcategory">
+        <div class="form-group controls">
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <div class="form-group controls">
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" id="btnhide" class="btn1">Add</button>
+        <div id="msg"></div>
+    </form>
+</div>
+
+<div class="categor">
+    <h1>Users</h1>
+    <table id="categ_inner">
+        
+      </table>
+</div>
+
+</center>
+
+<script>
+	// admin category upload
+	$("#addcategory").submit(function(event) {
+        event.preventDefault();
+        $.post("/addAdmin", $("#addcategory").serialize(), function(res) {
+            if (res.done === false) {
+                console.log(res);
+                $("#msg").html(`<div class="alert-danger">Upload error</div>`);  
+            } else {
+                window.location.href = "/adminUsr";
+            }
+        }).fail(function() {
+            $("#msg").html(`<div class="alert-danger">Server error</div>`);  
+        });
+    });
+
+
+    function categoryContent() {
+        $("#categ_inner").html("");
+        $.getJSON("/usersContent", function(res) {
+            console.log(res);
+            for (var i = 0; i < res.length; i++) {
+                putcategory(res[i]);
+            }
+        }).fail(function() {
+            $("#msg").html(`<div class="alert-danger">Server error</div>`);  
+        });
+    }
+    
+    function putcategory(a) {
+        var name = a.name;
+        var id = a.id;
+        var htm = `
+            <tr id="cat_${id}">
+                <td>${name}</td>
+                <td><i onClick="delCategory(${id})" class="fa fa-trash"></i></td>
+            </tr>`;
+        $("#categ_inner").prepend(htm);
+    }
+    
+    function delCategory(id){
+        $.get("/delUsr/" + id, function(res) {
+            console.log(res);
+            if (res === "true") {
+                $("#cat_" + id).hide();  
+            } else {
+                alert('Network error');
+            }
+        }).fail(function() {
+            alert('Network error');
+        });
+    }
+
+categoryContent();
+    
+</script>
+{% endblock %}

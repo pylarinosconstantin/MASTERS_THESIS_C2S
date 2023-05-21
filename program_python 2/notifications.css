@@ -1,0 +1,73 @@
+.notification{
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 12pt;
+    border-bottom: 1px solid #5d5d5d80;
+}
+.notification:hover .closenot{
+    color: white;
+    transition-duration: 0.2s;
+}
+.fa-user-o{
+    font-size: 22pt !important;
+}
+.notification p{
+    margin-top: 6px;
+}
+.closenot{
+    font-weight: bold;
+    position: relative;
+    bottom: 10px;
+    transition-duration: 0.2s;
+    color: transparent;
+}
+.closenot:hover{
+   cursor: pointer;
+}
+
+
+@media screen and (max-width: 650px) {
+    
+    .closenot{
+        font-weight: bold;
+        position: relative;
+        bottom: 10px;
+        transition-duration: 0.2s;
+        color: white !important;
+    }
+  
+  }
+
+          /*sidenav icon styles */
+.fa-home{
+    color: #818181;
+  }
+  #home1{
+    color: #818181;
+  }
+  .fa-hashtag{
+    color: #818181;
+  }
+  #explore1{
+    color: #818181;
+  }
+  .fa-user{
+    color: #818181;
+  }
+  #profile1{
+    color: #818181;
+  }
+  .fa-envelope{
+    color: #818181;
+  }
+  #messages1{
+    color: #818181;
+  }
+  .fa-bell{
+    color: white;
+  }
+  #notifications1{
+    color: white;
+  }
+  
